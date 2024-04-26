@@ -2,6 +2,9 @@ package com.example.demo.controller;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 //Java Program to Illustrate DepartmentController File
 
 //Importing required classes
@@ -22,6 +25,8 @@ import com.example.demo.service.DepartmentService;
 
 //Class
 public class DepartmentController {
+	
+	Logger logger = LoggerFactory.getLogger(DepartmentController.class);
 
 	// Annotation
 	@Autowired
@@ -49,6 +54,7 @@ public class DepartmentController {
 	@DeleteMapping("/departments/{id}")
 	public String deleteDepartmentById(@PathVariable("id") Long departmentId) {
 		departmentService.deleteDepartmentById(departmentId);
+		logger.info("Deleted Successfully");
 		return "Deleted Successfully";
 	}
 }
